@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: intervot
+  profiles:
+    active: dev  # ? ? ??
+  redis:
+    host: 127.0.0.1
+    port: 6379
+
+server:
+  port: 8090
+  address: 0.0.0.0
