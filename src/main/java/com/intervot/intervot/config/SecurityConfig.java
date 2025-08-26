@@ -66,7 +66,9 @@ public class SecurityConfig {
         // 허용할 Origin 설정
         config.setAllowedOrigins(List.of(
                 "http://localhost:5173",           // 로컬 프론트엔드
-                "http://52.78.69.113:8090"     // 운영 서버
+                "http://52.78.69.113:8090",
+                "https://intervot.duckdns.org",// 운영 서버
+                "https://intervot-frontend.vercel.app/"
         ));
 
         // 허용할 HTTP 메서드

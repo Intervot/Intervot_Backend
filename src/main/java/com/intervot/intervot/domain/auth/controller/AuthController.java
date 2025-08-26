@@ -23,10 +23,6 @@ public class AuthController {
     private final RedisTemplate<String, String> redisTemplate;
     private final AuthService authService;
 
-    @GetMapping("/ping")
-    public String ping() {
-        return "AuthController is working!";
-    }
 
     // Redis 테스트용 엔드포인트
     @GetMapping("/redis-test")
@@ -45,14 +41,14 @@ public class AuthController {
 
     // 로그인 API
     @PostMapping("/login")
-    public ResponseEntity<Map<String, Object>> login(@Valid @RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<Map<String, Object>> login(@RequestBody LoginRequest loginRequest) {
         log.info("============로그인 API 진입=================");
         return authService.login(loginRequest.getEmail(), loginRequest.getPassword());
     }
 
     // 회원가입 API
     @PostMapping("/signup")
-    public ResponseEntity<Map<String, Object>> signup(@Valid @RequestBody SignupRequest signupRequest) {
+    public ResponseEntity<Map<String, Object>> signup( @RequestBody SignupRequest signupRequest) {
         log.info("============회원가입 API 진입=================");
         return authService.signup(signupRequest.getEmail(), signupRequest.getPassword(), signupRequest.getNickname());
     }
@@ -61,7 +57,7 @@ public class AuthController {
     @PostMapping("/refresh")
     public ResponseEntity<Map<String, Object>> refresh(
             @RequestHeader("Authorization") String accessToken,
-            @Valid @RequestBody RefreshRequest refreshRequest) {
+            @RequestBody RefreshRequest refreshRequest) {
         log.info("============토큰 재발급 API 진입=================");
         return authService.refreshAccessToken(accessToken, refreshRequest.getRefreshToken());
     }
