@@ -75,4 +75,6 @@ public class AuthController {
         log.info("============토큰 검증 API 진입=================");
         return authService.validateToken(authHeader);
     }
+
+
 }
